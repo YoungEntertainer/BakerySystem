@@ -1,4 +1,3 @@
-
 package za.co.bakerysystem.model;
 
 import java.time.LocalDateTime;
@@ -29,6 +28,45 @@ public class Customer {
         this.city = city;
         this.zip = zip;
         this.comment = comment;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Customer(int ID, String customerName, String customerIDNo, String phoneNumber, String addressOne, String addressTwo, String city, String zip, String comment, String email, String password) {
+        this.ID = ID;
+        this.customerName = customerName;
+        this.customerIDNo = customerIDNo;
+        this.phoneNumber = phoneNumber;
+        this.addressOne = addressOne;
+        this.addressTwo = addressTwo;
+        this.city = city;
+        this.zip = zip;
+        this.comment = comment;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Customer(String customerName, String customerIDNo, String phoneNumber, String addressOne, String addressTwo, String city, String zip, String comment, String email, String password) {
+        this.customerName = customerName;
+        this.customerIDNo = customerIDNo;
+        this.phoneNumber = phoneNumber;
+        this.addressOne = addressOne;
+        this.addressTwo = addressTwo;
+        this.city = city;
+        this.zip = zip;
+        this.comment = comment;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Customer(String CustomerName, String customerIDNo, String phoneNumber, String addressOne, String city, String zip, String email, String password) {
+        this.customerName = customerName;
+        this.customerIDNo = customerIDNo;
+        this.phoneNumber = phoneNumber;
+        this.addressOne = addressOne;
+        this.addressTwo = addressTwo;
+        this.city = city;
+        this.zip = zip;
         this.email = email;
         this.password = password;
     }
@@ -137,5 +175,4 @@ public class Customer {
         return "Customer{" + "ID=" + ID + ", customerName=" + customerName + ", customerIDNo=" + customerIDNo + ", phoneNumber=" + phoneNumber + ", joinDate=" + joinDate + ", addressOne=" + addressOne + ", addressTwo=" + addressTwo + ", city=" + city + ", zip=" + zip + ", comment=" + comment + '}';
     }
 
-    
 }

@@ -6,11 +6,13 @@ import za.co.bakerysystem.model.PaymentType;
 
 public interface PaymentDAO {
 
-    void createPayment(Payment payment);
+    boolean createPayment(Payment payment);
 
-    void deletePayment(int orderID);
+    boolean deletePayment(int orderID);
 
     List<Payment> getOrderPayments(int orderID);
+
+    List<Payment> getOrderPayment(int orderID);
 
     List<PaymentType> getPaymentTypes();
 }

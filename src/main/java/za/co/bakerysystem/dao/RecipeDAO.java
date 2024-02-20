@@ -1,10 +1,15 @@
 package za.co.bakerysystem.dao;
 
+import java.util.List;
+import za.co.bakerysystem.model.Recipe;
+
 public interface RecipeDAO {
 
-    void createRecipe(int productID, String comment);
+    boolean createRecipe(int productID, String comment);
 
-    void createRecipeIngredient(int recipeID, int ingredientID, int grams);
+    List<String> getRecipe(int productID);
 
-    void deleteRecipeDetail(int recipeID);
+    boolean deleteRecipeDetail(int recipeID);
+
+    List<Recipe> getRecipes();
 }

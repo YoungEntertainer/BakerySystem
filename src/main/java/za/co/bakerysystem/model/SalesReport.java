@@ -1,4 +1,3 @@
-
 package za.co.bakerysystem.model;
 
 import java.time.LocalDate;
@@ -17,10 +16,14 @@ public class SalesReport {
         this.comment = comment;
     }
 
+    public SalesReport(Integer hours, String comment) {
+        this.hours = hours;
+        this.comment = comment;
+    }
+
     public SalesReport() {
     }
 
-    
     public int getID() {
         return ID;
     }
@@ -58,6 +61,4 @@ public class SalesReport {
         return "SalesReport{" + "ID=" + ID + ", date=" + date + ", hours=" + hours + ", comment=" + comment + '}';
     }
 
-    
-    
 }

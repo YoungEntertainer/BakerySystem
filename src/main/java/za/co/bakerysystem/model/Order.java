@@ -11,8 +11,9 @@ public class Order {
     private int fulfilled;
     private String comment;
     private double amount;
+    private String status;
 
-    public Order(int ID, int customerID, LocalDateTime datePlaced, LocalDateTime pickupTime, int fulfilled, String comment, double amount) {
+    public Order(int ID, int customerID, LocalDateTime datePlaced, LocalDateTime pickupTime, int fulfilled, String comment, double amount, String status) {
         this.ID = ID;
         this.customerID = customerID;
         this.datePlaced = datePlaced;
@@ -20,6 +21,15 @@ public class Order {
         this.fulfilled = fulfilled;
         this.comment = comment;
         this.amount = amount;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Order() {
@@ -83,7 +93,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "ID=" + ID + ", customerID=" + customerID + ", datePlaced=" + datePlaced + ", pickupTime=" + pickupTime + ", fulfilled=" + fulfilled + ", comment=" + comment + ", amount=" + amount + '}';
+        return "Order{" + "ID=" + ID + ", customerID=" + customerID + ", datePlaced=" + datePlaced + ", pickupTime=" + pickupTime + ", fulfilled=" + fulfilled + ", comment=" + comment + ", amount=" + amount + ", status=" + status + '}';
     }
 
 }

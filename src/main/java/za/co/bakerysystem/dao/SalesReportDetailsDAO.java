@@ -5,11 +5,11 @@ import za.co.bakerysystem.model.SalesReportDetails;
 
 public interface SalesReportDetailsDAO {
 
-    void createSaleDetail(SalesReportDetails salesReportDetails);
+    boolean createSaleDetail(SalesReportDetails salesReportDetails);
 
-    void updateSaleDetail(SalesReportDetails salesReportDetails);
+    boolean updateSaleDetail(SalesReportDetails salesReportDetails);
 
     List<SalesReportDetails> getSalesDetails(int saleID);
 
-    void deleteSaleDetail(int reportID);
+    boolean deleteSaleDetail(int reportID);
 }

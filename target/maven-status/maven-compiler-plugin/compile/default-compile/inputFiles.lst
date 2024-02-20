@@ -1,36 +1,113 @@
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\RecipeDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\Recipe.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\PaymentTypeDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\RecipeIngredientDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\CustomerDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\RecipeDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\RecipeIngredientDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\SalesReportDetails.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\OrderDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\OrderDetails.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\SalesReportDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\Customer.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\Ingredient.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\CustomerDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\SalesReportDetailsDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\PaymentType.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\OrderDetailsDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\OrderDetailsDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\OrderDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\Order.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\Product.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\IngredientDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\RecipeIngredient.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\PaymentDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\OrderProfitDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\OrderProfitDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\SalesReport.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\SalesReportDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\PaymentTypeDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\ProductDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\ProductDAO.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\IngredientDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\model\Payment.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\PaymentDAOImpl.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dbmanager\DbManager.java
-C:\Users\user\Documents\Macer Final Project\BakerySystem\src\main\java\za\co\bakerysystem\dao\SalesReportDetailsDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\OrderDetailsDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\AdminController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\RecipeDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\AdminDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\SalesReportDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\PaymentTypeController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\AddCustomer.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\CategoryService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\OrderProfitDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\SalesReportDetailsService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\ProductDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\RecipeIngredientDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\category\DuplicateCategoryExcpetion.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\product\ProductNotFoundException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\CategoryServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\IngredientDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\OrderDetailsService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\AdminService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\order\OrderDeletionException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\Product.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\OrderProfitService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\ShoppingCart.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\CustomerLogin.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\recipe\DuplicateRecipeException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\CustomerServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\product\DuplicateProductException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\SalesReport.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\Customer.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\CustomerDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\Order.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\PaymentServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\PaymentDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\customer\CustomerNotFoundException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\CustomerController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\Payment.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\CustomerDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\CategoryDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\ProductDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\ProductServlet.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\ProductController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\order\OrderNotFoundException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\PaymentType.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\OrderDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\paymentType\DuplicatePaymentTypeException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\RemoveProductServlet.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\UpdateSessionServlet.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\OrderDetailsServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\OrderDetailsDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\IngredientDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\UpdateCartServlet.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\SalesReportDetailsDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\PaymentTypeDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\CategoryDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\IngredientServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\PaymentTypeService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\order\InvalidSortOrderException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\SalesReportService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\RecipeIngredientService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\customer\DuplicateEmailException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\PaymentTypeServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\admin\AdminNotFound.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\AdminServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\RecipeServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\PaymentService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\CategoryController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\customer\CustomerDeletionException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\OrderProfitDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\ShoppingCartServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\ShoppingCartController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\SalesReportServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\OrderService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\OrderDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\IngredientService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\RecipeIngredient.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\InvalidDateFormatException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\ShoppingCartDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\restapi\MyRestApp.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\AdminDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\SalesReportDetailsServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\OrderProfitServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\IngredientController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\CartServlet.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\SalesReportDetailsDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\OrderDetails.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\PaymentDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\Category.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\RecipeService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dbmanager\DbManager.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\Recipe.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\ProductService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\ProductServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\CustomerService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\order\OrderUpdateException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\ShoppingCartDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\RecipeIngredientServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\RecipeController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\SalesReportDetails.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\ShoppingCartService.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\Ingredient.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\AddToCartServlet.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\model\Admin.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\PaymentController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\PaymentTypeDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\RecipeDAO.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\HomeServlet.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\RecipeIngredientController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\exception\customer\DuplicateIdException.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\OrderDetailsController.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\SalesReportDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\service\impl\OrderServiceImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\jsp\controller\CategoryServlet.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\dao\impl\RecipeIngredientDAOImpl.java
+C:\Users\user\Desktop\NewRepo\topiefor2\java\BakerySystem\src\main\java\za\co\bakerysystem\controller\OrderController.java

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ingredients to be ordered</title>
+        <style type="text/css">
+            .tftable {
+                font-size:14px;
+                color:#333333;
+                width:100%;
+                border-width: 1px;
+                border-color: #87ceeb;
+                border-collapse: collapse;
+            }
+            .tftable th {
+                font-size:18px;
+                background-color:#87ceeb;
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #87ceeb;
+                text-align:left;
+            }
+            .tftable tr {
+                background-color:#ffffff;
+            }
+            .tftable td {
+                font-size:14px;
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #87ceeb;
+            }
+            .tftable tr:hover {
+                background-color:#e0ffff;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="dataTable" class="tftable" border="1">
+            <tr>
+
+                <th>Name</th>
+                <th>Price Per KG</th>
+                <th>Note</th>
+                <th>Quantity</th>
+                <th>Unit ID</th>
+            </tr>
+        </table>
+
+        <script>
+            // Function to fetch data asynchronously
+            function fetchData() {
+                fetch('http://localhost:8080/BakerySystem/api/ingredients/ingredients_to_be_ordered')
+                        .then(response => response.json())
+                        .then(data => {
+                            renderData(data);
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
+            }
+
+            // Function to render fetched data in the table
+            function renderData(data) {
+                var table = document.getElementById("dataTable");
+                data.forEach(row => {
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `
+                            <td>${row.name}</td>
+                            <td>R${row.pricePerKG}</td>
+                            <td>${row.note}</td>
+                            <td>${row.quantity}</td>
+                            <td>${row.unitID === 1 ? 'GRAMS' : 'MILLILITRES'}</td>
+            <!-- Add more table cells if needed -->
+        `;
+                    table.appendChild(tr);
+                });
+
+//                table.innerHTML = `
+//                    ${data.map(row => `
+//                        <tr>
+//                            <td>${row.name}</td>
+//                            <td>${row.pricePerKG}</td>
+//                            <td>${row.note}</td>
+//                            <td>${row.quantity}</td>
+//                            <td>${row.unitID === 1 ? 'GRAMS' : 'MILLILITRES'}</td>
+//                            
+//                        </tr>
+//                    `).join('')}
+//                `;
+            }
+
+            // Call fetchData function when the page loads
+            window.onload = fetchData;
+        </script>
+    </body>
+</html>

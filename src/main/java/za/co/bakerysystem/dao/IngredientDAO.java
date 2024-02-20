@@ -18,7 +18,10 @@ public interface IngredientDAO {
 
     int getIngredientQuantity();
 
-    List<Product> getRelatedProducts(int ingredientID);
+    
+    List<Ingredient> getIngredientsInStock();
+    
+    List<Ingredient> getIngredientsToBeOrdered();
 
     boolean deleteIngredient(int ingredientID);
 }

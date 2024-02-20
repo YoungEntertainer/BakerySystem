@@ -2,21 +2,18 @@ package za.co.bakerysystem.dao;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import za.co.bakerysystem.model.Order;
 import za.co.bakerysystem.model.OrderDetails;
-import za.co.bakerysystem.model.Payment;
-import za.co.bakerysystem.model.Product;
 
 public interface OrderDAO {
 
-    String createOrder(Order order);
+    boolean createOrder(Order order);
 
-    void updateOrder(Order order);
+    boolean updateOrder(Order order);
 
-    void fulfillOrder(int orderID, boolean fullFilled);
+    boolean fulfillOrder(int orderID, int fullFilled);
 
-    void createOrderDetail(OrderDetails orderDetails);
+    boolean createOrderDetail(OrderDetails orderDetails);
 
     List<Order> getOrders();
 
@@ -24,17 +21,31 @@ public interface OrderDAO {
 
     int getOrdersCurrent();
 
+    List<Order> getCustomerOrders(int customerID);
+
+    int getNumOrders(int customerID);
+
+    List<Order> getOrdersByRange(int fulfilled, LocalDate startDate, LocalDate endDate);
+
+    int getOrderQuantity(int productID);
+
+    int getOrderQuantityByKeyWord(String keyWord);
+
+    List<Order> getOrders(int productID);
+
     int getTotalOrdersQuantity();
 
     List<Order> getOrdersByRange(String startDate, String endDate, String keyWord);
 
     Order getOrder(int orderID);
 
-    List<Payment> getOrderPayment(int orderID);
+    List<Order> getOrdersPlaced(String startDate, String endDate, String sortOrder);
 
-    List<Product> getOrderProduct(int orderID);
+    List<Order> getOrdersOutstanding(String startDate, String endDate, int category);
 
-    void deleteOrders(List<Integer> orderIDs);
+    List<Order> getOrdersDelivered(String startDate, String endDate, String sortOrder);
+
+    boolean deleteOrder(int orderID);
 
     void deleteOrderDetail(int orderID);
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Report Order Delivered</title>
+        <style>
+            .tftable {
+                font-size:14px;
+                color:#333333;
+                width:100%;
+                border-width: 1px;
+                border-color: #87ceeb;
+                border-collapse: collapse;
+            }
+            .tftable th {
+                font-size:18px;
+                background-color:#87ceeb;
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #87ceeb;
+                text-align:left;
+            }
+            .tftable tr {
+                background-color:#ffffff;
+            }
+            .tftable td {
+                font-size:14px;
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #87ceeb;
+            }
+            .tftable tr:hover {
+                background-color:#e0ffff;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="dataTable" class="tftable" border="1">
+            <tr>
+                <th>Customer ID</th>
+                <th>Date Placed</th>
+                <th>Pickup Time</th>
+                <th>Fulfilled</th>
+                <th>Comment</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>ID</th>
+            </tr>
+        </table>
+
+        <script>
+            // Function to fetch data asynchronously with query parameters
+            function fetchData(startDate, endDate, sortOrder) {
+                var apiUrl = `http://localhost:8080/BakerySystem/api/orders/orders_delivered/?startDate=${startDate}&endDate=${endDate}&sortOrder=${sortOrder}`;
+
+                fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            renderData(data);
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
+            }
+
+            // Function to render fetched data in the table
+            function renderData(data) {
+                var table = document.getElementById("dataTable");
+                data.forEach(row => {
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td>${row.customerID}</td>
+                        <td>${formatDate(row.datePlaced)}</td>
+                        <td>${formatDate(row.pickupTime)}</td>
+                        <td>${row.fulfilled === 1 ? "Yes" : row.fulfilled === 0 ? "No" : ""}</td>
+                        <td>${row.comment}</td>
+                        <td>${row.amount}</td>
+                        <td>${row.status}</td>
+                        <td>${row.id}</td>
+                    `;
+                    table.appendChild(tr);
+                });
+            }
+
+            // Function to format date
+            function formatDate(date) {
+                return `${date.dayOfMonth}-${date.month}-${date.year}`;
+            }
+
+            // Function to format date and time
+            function formatDateTime(dateTime) {
+                return `${formatDate(dateTime)} ${dateTime.hour}:${dateTime.minute}`;
+            }
+
+            // Function to prompt user for query parameters and fetch data
+            function promptQueryParams() {
+                var startDate = prompt("Enter start date (YYYY-MM-DD):");
+                var endDate = prompt("Enter end date (YYYY-MM-DD):");
+                var sortOrder = prompt("Enter sort order:");
+                var isConfirmed = confirm(`Start Date: ${startDate}\nEnd Date: ${endDate}\nSort Order: ${sortOrder}\n\nAre these correct?`);
+                if (isConfirmed) {
+                    fetchData(startDate, endDate, sortOrder);
+                } else {
+                    console.log("User cancelled or provided incorrect input.");
+                }
+            }
+
+            // Call promptQueryParams function when the page loads
+            window.onload = promptQueryParams;
+        </script>
+    </body>
+</html>

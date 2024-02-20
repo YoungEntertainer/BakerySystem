@@ -7,12 +7,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import za.co.bakerysystem.dbmanager.DbManager;
 
 public class OrderProfitDAOImpl implements OrderProfitDAO {
 
-    private static final String JDBC_URL = "jdbc:your_database_url";
-    private static final String USERNAME = "your_username";
-    private static final String PASSWORD = "your_password";
+    private Connection connection;
+    private static DbManager db;
+    private PreparedStatement ps;
+    private ResultSet rs;
+
+    public OrderProfitDAOImpl(Connection connection) {
+        this.connection = connection;
+    }
+
+    public OrderProfitDAOImpl() {
+        db = DbManager.getInstance();
+        this.connection = db.getConnection();
+    }
 
     @Override
     public List<Map<String, Object>> fetchOrderProfit() {
@@ -47,35 +58,109 @@ public class OrderProfitDAOImpl implements OrderProfitDAO {
     private List<Map<String, Object>> executeQuery(String query, Object... params) {
         List<Map<String, Object>> resultList = new ArrayList<>();
 
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
-                PreparedStatement statement = connection.prepareStatement(query)) {
+        try {
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
-            setParameters(statement, params);
+            setParameters(ps, params);
 
-            try (ResultSet resultSet = statement.executeQuery()) {
-                ResultSetMetaData metaData = resultSet.getMetaData();
-                int columnCount = metaData.getColumnCount();
+            rs = ps.executeQuery();
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
 
-                while (resultSet.next()) {
-                    Map<String, Object> row = new HashMap<>();
-                    for (int i = 1; i <= columnCount; i++) {
-                        String columnName = metaData.getColumnName(i);
-                        Object value = resultSet.getObject(i);
-                        row.put(columnName, value);
-                    }
-                    resultList.add(row);
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                for (int i = 1; i <= columnCount; i++) {
+                    String columnName = metaData.getColumnName(i);
+                    Object value = rs.getObject(i);
+                    row.put(columnName, value);
                 }
+                resultList.add(row);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        try {
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+
+            setParameters(ps, params);
+
+            rs = ps.executeQuery();
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                for (int i = 1; i <= columnCount; i++) {
+                    String columnName = metaData.getColumnName(i);
+                    Object value = rs.getObject(i);
+                    row.put(columnName, value);
+                }
+                resultList.add(row);
+            }
+
+        } catch (SQLException e) {
+            handleSQLException(e);
         }
 
         return resultList;
     }
 
-    private void setParameters(PreparedStatement statement, Object... params) throws SQLException {
+    private void setParameters(PreparedStatement ps, Object... params) throws SQLException {
         for (int i = 0; i < params.length; i++) {
-            statement.setObject(i + 1, params[i]);
+            ps.setObject(i + 1, params[i]);
         }
     }
+
+    private void handleSQLException(SQLException e) {
+        e.printStackTrace();
+    }
+
+    //------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------
+    public static void main(String[] args) {
+        OrderProfitDAO orderProfitDAO = new OrderProfitDAOImpl();
+
+        // Test fetchOrderProfit
+//        System.out.println("Order Profit:");
+//        List<Map<String, Object>> orderProfitList = orderProfitDAO.fetchOrderProfit();
+//        printResult(orderProfitList);
+//        // Test fetchOrderProfitLastMonth
+//        System.out.println("\nOrder Profit Last Month:");
+//        List<Map<String, Object>> orderProfitLastMonthList = orderProfitDAO.fetchOrderProfitLastMonth();
+//        printResult(orderProfitLastMonthList);
+//        // Test fetchSaleProfit
+//        System.out.println("\nSale Profit:");
+//        List<Map<String, Object>> saleProfitList = orderProfitDAO.fetchSaleProfit();
+//        printResult(saleProfitList);
+//        // Test fetchSaleProfitLastMonth
+//        System.out.println("\nSale Profit Last Month:");
+//        List<Map<String, Object>> saleProfitLastMonthList = orderProfitDAO.fetchSaleProfitLastMonth();
+//        printResult(saleProfitLastMonthList);
+        // Test fetchOrderProfitInRange
+        //       System.out.println("\nOrder Profit in Range:");
+        LocalDate startDate = LocalDate.of(2022, 1, 1);
+        LocalDate endDate = LocalDate.of(2025, 12, 31);
+//        List<Map<String, Object>> orderProfitInRangeList = orderProfitDAO.fetchOrderProfitInRange(startDate, endDate);
+//        printResult(orderProfitInRangeList);
+
+        // Test fetchSaleProfitInRange
+//        System.out.println("\nSale Profit in Range:");
+//        List<Map<String, Object>> saleProfitInRangeList = orderProfitDAO.fetchSaleProfitInRange(startDate, endDate);
+//        printResult(saleProfitInRangeList);
+    }
+
+    private static void printResult(List<Map<String, Object>> resultList) {
+        for (Map<String, Object> row : resultList) {
+            for (Map.Entry<String, Object> entry : row.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+            System.out.println("----------");
+        }
+    }
+
 }

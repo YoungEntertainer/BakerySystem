@@ -1,19 +1,19 @@
-
 package za.co.bakerysystem.model;
-
-import java.math.BigDecimal;
 
 public class SalesReportDetails {
 
     private int salesReportID;
     private int productID;
-    private Integer startQuantity;
-    private Integer quantitySold;
-    private Integer quantityTrashed;
-    private BigDecimal priceAtSale;
-    private BigDecimal foodCostAtSale;
+    private int startQuantity;
+    private int quantitySold;
+    private int quantityTrashed;
+    private double priceAtSale;
+    private double foodCostAtSale;
+    private double profit;
+    private double revenue;
+    private double lost;
 
-    public SalesReportDetails(int salesReportID, int productID, Integer startQuantity, Integer quantitySold, Integer quantityTrashed, BigDecimal priceAtSale, BigDecimal foodCostAtSale) {
+    public SalesReportDetails(int salesReportID, int productID, int startQuantity, int quantitySold, int quantityTrashed, double priceAtSale, double foodCostAtSale, double profit, double revenue, double lost) {
         this.salesReportID = salesReportID;
         this.productID = productID;
         this.startQuantity = startQuantity;
@@ -21,6 +21,36 @@ public class SalesReportDetails {
         this.quantityTrashed = quantityTrashed;
         this.priceAtSale = priceAtSale;
         this.foodCostAtSale = foodCostAtSale;
+        this.profit = profit;
+        this.revenue = revenue;
+        this.lost = lost;
+    }
+
+    public double getProfit() {
+        return profit;
+    }
+
+    public void setProfit(double profit) {
+        this.profit = profit;
+    }
+
+    public double getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(double revenue) {
+        this.revenue = revenue;
+    }
+
+    public double getLost() {
+        return lost;
+    }
+
+    public void setLost(double lost) {
+        this.lost = lost;
+    }
+
+    public SalesReportDetails() {
     }
 
     public int getSalesReportID() {
@@ -39,50 +69,49 @@ public class SalesReportDetails {
         this.productID = productID;
     }
 
-    public Integer getStartQuantity() {
+    public int getStartQuantity() {
         return startQuantity;
     }
 
-    public void setStartQuantity(Integer startQuantity) {
+    public void setStartQuantity(int startQuantity) {
         this.startQuantity = startQuantity;
     }
 
-    public Integer getQuantitySold() {
+    public int getQuantitySold() {
         return quantitySold;
     }
 
-    public void setQuantitySold(Integer quantitySold) {
+    public void setQuantitySold(int quantitySold) {
         this.quantitySold = quantitySold;
     }
 
-    public Integer getQuantityTrashed() {
+    public int getQuantityTrashed() {
         return quantityTrashed;
     }
 
-    public void setQuantityTrashed(Integer quantityTrashed) {
+    public void setQuantityTrashed(int quantityTrashed) {
         this.quantityTrashed = quantityTrashed;
     }
 
-    public BigDecimal getPriceAtSale() {
+    public double getPriceAtSale() {
         return priceAtSale;
     }
 
-    public void setPriceAtSale(BigDecimal priceAtSale) {
+    public void setPriceAtSale(double priceAtSale) {
         this.priceAtSale = priceAtSale;
     }
 
-    public BigDecimal getFoodCostAtSale() {
+    public double getFoodCostAtSale() {
         return foodCostAtSale;
     }
 
-    public void setFoodCostAtSale(BigDecimal foodCostAtSale) {
+    public void setFoodCostAtSale(double foodCostAtSale) {
         this.foodCostAtSale = foodCostAtSale;
     }
 
     @Override
     public String toString() {
-        return "SalesReportDetails{" + "salesReportID=" + salesReportID + ", productID=" + productID + ", startQuantity=" + startQuantity + ", quantitySold=" + quantitySold + ", quantityTrashed=" + quantityTrashed + ", priceAtSale=" + priceAtSale + ", foodCostAtSale=" + foodCostAtSale + '}';
+        return "SalesReportDetails{" + "salesReportID=" + salesReportID + ", productID=" + productID + ", startQuantity=" + startQuantity + ", quantitySold=" + quantitySold + ", quantityTrashed=" + quantityTrashed + ", priceAtSale=" + priceAtSale + ", foodCostAtSale=" + foodCostAtSale + ", profit=" + profit + ", revenue=" + revenue + ", lost=" + lost + '}';
     }
 
-    
 }

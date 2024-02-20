@@ -1,14 +1,13 @@
 package za.co.bakerysystem.dao.impl;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.bakerysystem.dao.CustomerDAO;
+import za.co.bakerysystem.dao.ProductDAO;
 import za.co.bakerysystem.dbmanager.DbManager;
 import za.co.bakerysystem.model.Customer;
-import za.co.bakerysystem.model.Order;
 import za.co.bakerysystem.model.Product;
 
 public class CustomerDAOImpl implements CustomerDAO {
@@ -34,13 +33,12 @@ public class CustomerDAOImpl implements CustomerDAO {
         connection = db.getConnection();
 
         try {
-            ps = connection.prepareStatement(
-                    "INSERT INTO Customer (CustomerName, customerIDNo, phoneNumber, joinDate, addressOne, addressTwo, city, zip, comment,email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            ps = connection.prepareStatement("INSERT INTO Customer (CustomerName, customerIDNo, phoneNumber, joinDate, addressOne, addressTwo, city, zip, comment,email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, customer.getCustomerName());
             ps.setString(2, customer.getCustomerIDNo());
             ps.setString(3, customer.getPhoneNumber());
-            ps.setObject(4, customer.getJoinDate());
+            ps.setObject(4, customer.getJoinDate().now());
             ps.setString(5, customer.getAddressOne());
             ps.setString(6, customer.getAddressTwo());
             ps.setString(7, customer.getCity());
@@ -72,24 +70,42 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
+    public Customer login(String email, String password) {
+        db = DbManager.getInstance();
+        String sql = "SELECT * FROM customer WHERE email = ? AND password = ?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return extractCustomerFromResultSet(rs);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return null;
+    }
+
+    @Override
     public boolean updateCustomer(Customer customer, int customerID) {
         db = DbManager.getInstance();
         connection = db.getConnection();
 
         try {
-            ps = connection.prepareStatement("UPDATE Customer SET customerName=?, customerIDNo=?, phoneNumber=?, joinDate=?, addressOne=?, addressTwo=?, city=?, zip=?, comment=? ,email=? ,password=? WHERE ID=?");
+            ps = connection.prepareStatement("UPDATE Customer SET customerName=?, customerIDNo=?, phoneNumber=?, addressOne=?, addressTwo=?, city=?, zip=?, comment=? ,email=? ,password=? WHERE ID=?");
             ps.setString(1, customer.getCustomerName());
             ps.setString(2, customer.getCustomerIDNo());
             ps.setString(3, customer.getPhoneNumber());
-            ps.setObject(4, customer.getJoinDate());
-            ps.setString(5, customer.getAddressOne());
-            ps.setString(6, customer.getAddressTwo());
-            ps.setString(7, customer.getCity());
-            ps.setString(8, customer.getZip());
-            ps.setString(9, customer.getComment());
-            ps.setInt(12, customerID);
-            ps.setString(10, customer.getEmail());
-            ps.setString(11, customer.getPassword());
+            ps.setString(4, customer.getAddressOne());
+            ps.setString(5, customer.getAddressTwo());
+            ps.setString(6, customer.getCity());
+            ps.setString(7, customer.getZip());
+            ps.setString(8, customer.getComment());
+            ps.setString(9, customer.getEmail());
+            ps.setString(10, customer.getPassword());
+            ps.setInt(11, customerID);
 
             int affectedRows = ps.executeUpdate();
 
@@ -169,7 +185,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public Customer getCustomer(int customerID) {
+    public Customer getCustomer(int customerID) { // throws Us
         db = DbManager.getInstance();
         connection = db.getConnection();
         try {
@@ -182,43 +198,23 @@ public class CustomerDAOImpl implements CustomerDAO {
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
-
+        // throw new UserNotFound("User not found");
         return null;
-    }
-
-    @Override
-    public List<Product> getFavoriteProducts(int customerID) {
-        db = DbManager.getInstance();
-
-        List<Product> favoriteProducts = new ArrayList<>();
-        connection = db.getConnection();
-        try {
-            ps = connection.prepareCall("CALL fetch_customer_favorites(?)");
-            ps.setInt(1, customerID);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Product product = extractProductFromResultSet(rs);
-                favoriteProducts.add(product);
-            }
-
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }
-
-        return favoriteProducts;
     }
 
     @Override
     public int getCustomerPoints(int customerID) {
         db = DbManager.getInstance();
         connection = db.getConnection();
-
+        int total = 0;
         try {
             ps = connection.prepareCall("CALL fetch_customer_points(?)");
             ps.setInt(1, customerID);
             rs = ps.executeQuery();
             if (rs.next()) {
-                return rs.getInt("points");
+                total = rs.getInt("total");
+            } else {
+                System.out.println("No points or information");
             }
 
         } catch (SQLException ex) {
@@ -226,74 +222,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         }
 
-        return 0;
-    }
-
-    @Override
-    public List<Order> getCustomerOrders(int customerID) {
-        db = DbManager.getInstance();
-
-        List<Order> customerOrders = new ArrayList<>();
-        connection = db.getConnection();
-        try {
-            ps = connection.prepareCall("CALL fetch_customer_orders(?)");
-            ps.setInt(1, customerID);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Order order = extractOrderFromResultSet(rs);
-                customerOrders.add(order);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-
-        }
-
-        return customerOrders;
-    }
-
-    @Override
-    public int getNumOrders(int customerID) {
-        db = DbManager.getInstance();
-        connection = db.getConnection();
-        try {
-            ps = connection.prepareStatement("SELECT COUNT(ID) AS numOrder FROM `Order` o WHERE Customer_ID = ?");
-            ps.setInt(1, customerID);
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-                return rs.getInt("numOrder");
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-
-        }
-
-        return 0;
-    }
-
-    @Override
-    public List<Order> getOrdersByRange(int fulfilled, LocalDate startDate, LocalDate endDate) {
-        db = DbManager.getInstance();
-        List<Order> orders = new ArrayList<>();
-        connection = db.getConnection();
-        try {
-            ps = connection.prepareCall("CALL fetch_select_orders_in_range(?, ?, ?)");
-            ps.setInt(1, fulfilled);
-            ps.setDate(2, Date.valueOf(startDate));
-            ps.setDate(3, Date.valueOf(endDate));
-
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Order order = extractOrderFromResultSet(rs);
-                orders.add(order);
-            }
-
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-
-        }
-
-        return orders;
+        return total;
     }
 
     @Override
@@ -309,6 +238,47 @@ public class CustomerDAOImpl implements CustomerDAO {
             System.out.println("Error: " + ex.getMessage());
             return false;
         }
+    }
+
+    @Override
+    public Customer getCustomerByEmail(String email) {
+        db = DbManager.getInstance();
+        connection = db.getConnection();
+        try {
+            ps = connection.prepareCall("CALL fetch_customer_email(?)");
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return extractCustomerFromResultSet(rs);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+
+        return null;
+
+    }
+
+    @Override
+    public List<Customer> getTopCustomers(int productID) {
+        List<Customer> topCustomers = new ArrayList<>();
+        db = DbManager.getInstance();
+        connection = db.getConnection();
+        try {
+            ps = connection.prepareStatement("CALL fetch_product_top_customer(?)");
+            ps.setInt(1, productID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Customer customer = new Customer();
+                customer.setID(rs.getInt("customerID"));
+                topCustomers.add(customer);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return topCustomers;
     }
 
     private Customer extractCustomerFromResultSet(ResultSet rs) throws SQLException {
@@ -329,52 +299,30 @@ public class CustomerDAOImpl implements CustomerDAO {
         return customer;
     }
 
-    private Product extractProductFromResultSet(ResultSet rs) throws SQLException {
-        Product product = new Product();
-        product.setID(rs.getInt("ID"));
-        product.setName(rs.getString("name"));
-        product.setPrice(rs.getDouble("price"));
-        product.setFoodCost(rs.getDouble("foodCost"));
-        product.setTimeCost(rs.getInt("timeCost"));
-        product.setComment(rs.getString("comment"));
-        return product;
-    }
-
-    private Order extractOrderFromResultSet(ResultSet rs) throws SQLException {
-        Order order = new Order();
-        order.setID(rs.getInt("ID"));
-        order.setCustomerID(rs.getInt("customerID"));
-        order.setDatePlaced(rs.getObject("datePlaced", LocalDateTime.class));
-        order.setPickupTime(rs.getObject("pickupTime", LocalDateTime.class));
-        order.setFulfilled(rs.getInt("fulfilled"));
-        order.setComment(rs.getString("comment"));
-        order.setAmount(rs.getDouble("amount"));
-        return order;
-    }
-
     //----------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------
     public static void main(String[] args) {
         //db = DbManager.getInstance();
         CustomerDAO customerDAO = new CustomerDAOImpl();
-
-        // Test createCustomer method
-        Customer newCustomer = new Customer();
-        newCustomer.setCustomerName("Sphe Doe");
-        newCustomer.setCustomerIDNo("123456789");
-        newCustomer.setPhoneNumber("555-1234");
-        newCustomer.setJoinDate(LocalDateTime.now());
-        newCustomer.setAddressOne("123 Main St");
-        newCustomer.setCity("Pretoria");
-        newCustomer.setZip("12345");
-        newCustomer.setComment("A new customer");
-        newCustomer.setEmail("john@example.com");
-        newCustomer.setPassword("password");
-
-     //   Adding customer
-         customerDAO.createCustomer(newCustomer);
-         
+        ProductDAO productDAO = new ProductDAOImpl();
+//        // Test createCustomer method
+//        Customer newCustomer = new Customer();
+//        newCustomer.setCustomerName("Sphe Doe");
+//        newCustomer.setCustomerIDNo("123456789");
+//        newCustomer.setPhoneNumber("555-1234");
+//        newCustomer.setJoinDate(LocalDateTime.now());
+//        newCustomer.setAddressOne("123 Main St");
+//        newCustomer.setCity("Pretoria");
+//        newCustomer.setZip("12345");
+//        newCustomer.setComment("A new customer");
+//        newCustomer.setEmail("john@example.com");
+//        newCustomer.setPassword("password34");
+//
+//        //   Adding customer
+//        System.out.println(customerDAO.createCustomer(newCustomer));;
+        //Test for login    
+//        System.out.println(customerDAO.login("john@example.com", "password34"));
         //update customer
 //        if (customerDAO.updateCustomer(newCustomer,2)) {
 //            System.out.println("Success");
@@ -404,37 +352,38 @@ public class CustomerDAOImpl implements CustomerDAO {
 //        System.out.println("Number of customers: " + customersQuantity);
 //
 //        // Test getCustomersByKeyWord method
-        String keyword = "Pretoria";
-        List<Customer> customersByKeyword = customerDAO.getCustomersByKeyWord(keyword);
-        System.out.println("Customers with keyword '" + keyword + "': " + customersByKeyword);
+//        String keyword = "Pretoria";
+//        List<Customer> customersByKeyword = customerDAO.getCustomersByKeyWord(keyword);
+//        System.out.println("Customers with keyword '" + keyword + "': " + customersByKeyword);
 //
 //        // Test getCustomer method
 //        int customerIdToRetrieve = 2;
 //        Customer retrievedCustomer = customerDAO.getCustomer(customerIdToRetrieve);
 //        System.out.println("Retrieved customer by ID " + customerIdToRetrieve + ": " + retrievedCustomer);
+        //Test getCustomerByEmail
+//        Customer retrievedCustomer = customerDAO.getCustomerByEmail("john@example.com");
+//        System.out.println("Retrieved customer by ID " + ": " + retrievedCustomer);
 //
-//        // Test getFavoriteProducts method
-//        List<Product> favoriteProducts = customerDAO.getFavoriteProducts(customerIdToRetrieve);
-//        System.out.println("Favorite products for customer ID " + customerIdToRetrieve + ": " + favoriteProducts);
-//
-//        // Test getCustomerPoints method
-//        int customerPoints = customerDAO.getCustomerPoints(customerIdToRetrieve);
-//        System.out.println("Customer points for customer ID " + customerIdToRetrieve + ": " + customerPoints);
-//
-//        // Test getCustomerOrders method
-//        List<Order> customerOrders = customerDAO.getCustomerOrders(customerIdToRetrieve);
-//        System.out.println("Orders for customer ID " + customerIdToRetrieve + ": " + customerOrders);
-//
+        // Test getFavoriteProducts method
+        List<Product> favoriteProducts = productDAO.getFavoriteProducts(2);
+        System.out.println("Favorite products for customer ID " + 1 + ": " + favoriteProducts);
+        // Test getCustomerPoints method
+//        int customerPoints = customerDAO.getCustomerPoints(1);
+//        System.out.println("Customer points for customer ID " + 1 + ": " + customerPoints);
+        // Test getCustomerOrders method
+//        List<Order> customerOrders = customerDAO.getCustomerOrders(1);
+//        System.out.println("Orders for customer ID " + 4 + ": " + customerOrders);
 //        // Test getNumOrders method
-//        int numOrders = customerDAO.getNumOrders(customerIdToRetrieve);
-//        System.out.println("Number of orders for customer ID " + customerIdToRetrieve + ": " + numOrders);
+//        int numOrders = customerDAO.getNumOrders(1);
+//        System.out.println("Number of orders:  " + numOrders);
 //
-//        // Test getOrdersByRange method
-//        boolean fulfilled = true;
+        // Test getOrdersByRange method
+//        int fulfilled = 0;
 //        LocalDate startDate = LocalDate.now().minusMonths(1);
 //        LocalDate endDate = LocalDate.now();
 //        List<Order> ordersInRange = customerDAO.getOrdersByRange(fulfilled, startDate, endDate);
 //        System.out.println("Orders within the date range: " + ordersInRange);
+//        
         // Test deleteCustomers method
 //List<String> customerIdsToDelete = new ArrayList<>();
 //customerIdsToDelete.add(newCustomer.getID());

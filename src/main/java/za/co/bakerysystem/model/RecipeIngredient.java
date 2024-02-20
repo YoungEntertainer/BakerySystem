@@ -5,12 +5,12 @@ public class RecipeIngredient {
 
     private int recipeID;
     private int ingredientID;
-    private Integer grams;
+    private int quantity;
 
-    public RecipeIngredient(int recipeID, int ingredientID, Integer grams) {
+    public RecipeIngredient(int recipeID, int ingredientID, int quantity) {
         this.recipeID = recipeID;
         this.ingredientID = ingredientID;
-        this.grams = grams;
+        this.quantity = quantity;
     }
 
     public RecipeIngredient() {
@@ -32,17 +32,17 @@ public class RecipeIngredient {
         this.ingredientID = ingredientID;
     }
 
-    public Integer getGrams() {
-        return grams;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setGrams(Integer grams) {
-        this.grams = grams;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
     public String toString() {
-        return "RecipeIngredient{" + "recipeID=" + recipeID + ", ingredientID=" + ingredientID + ", grams=" + grams + '}';
+        return "RecipeIngredient{" + "recipeID=" + recipeID + ", ingredientID=" + ingredientID + ", quantity=" + quantity + '}';
     }
 
     

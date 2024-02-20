@@ -13,16 +13,12 @@ public class DbManager {
     private DbManager() {
         String url = "jdbc:mysql://localhost:3306/bakery?useSSL=false";
         String user = "root";
-        String password = "";
+        String password = "root";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, user, password);
             System.out.println("Got a connection");
-        } catch (SQLException se) {
-            se.printStackTrace();
-            System.err.println("Could not connect: " + se.getMessage());
-        } catch (ClassNotFoundException se) {
-            se.printStackTrace();
+        } catch (SQLException | ClassNotFoundException se) {
             System.err.println("Could not connect: " + se.getMessage());
         }
 
